@@ -1,0 +1,650 @@
+{
+  "version": "0.1.0",
+  "name": "basc_staking",
+  "instructions": [
+    {
+      "name": "initialize",
+      "accounts": [
+        {
+          "name": "admin",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "globalAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "rewardVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "globalBump",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "initializeUserPool",
+      "accounts": [
+        {
+          "name": "userPool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "owner",
+          "isMut": true,
+          "isSigner": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "initializeUserPairPool",
+      "accounts": [
+        {
+          "name": "userPool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "owner",
+          "isMut": true,
+          "isSigner": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "stakeNftToPool",
+      "accounts": [
+        {
+          "name": "owner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "userPool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "globalAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "destNftTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "nftMint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "mintMetadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenMetadataProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "globalBump",
+          "type": "u8"
+        },
+        {
+          "name": "rank",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "withdrawNftFromPool",
+      "accounts": [
+        {
+          "name": "owner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "userPool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "globalAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "destNftTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "nftMint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rewardVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userRewardAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "globalBump",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "claimReward",
+      "accounts": [
+        {
+          "name": "owner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "userPool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "globalAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "rewardVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userRewardAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "globalBump",
+          "type": "u8"
+        },
+        {
+          "name": "nftAddress",
+          "type": {
+            "option": "publicKey"
+          }
+        }
+      ]
+    },
+    {
+      "name": "stakeNftToPairPool",
+      "accounts": [
+        {
+          "name": "owner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "userPool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "globalAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userApeTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "destApeNftTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "apeNftMint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "apeMintMetadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userTigerTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "destTigerNftTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tigerNftMint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tigerMintMetadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenMetadataProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "globalBump",
+          "type": "u8"
+        },
+        {
+          "name": "apeRank",
+          "type": "u64"
+        },
+        {
+          "name": "tigerRank",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "withdrawNftFromPairPool",
+      "accounts": [
+        {
+          "name": "owner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "userPool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "globalAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "rewardVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userApeTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "destApeNftTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "apeNftMint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "userTigerTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "destTigerNftTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tigerNftMint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "userRewardAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "globalBump",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "claimPairReward",
+      "accounts": [
+        {
+          "name": "owner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "userPool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "globalAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "rewardVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userRewardAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "globalBump",
+          "type": "u8"
+        },
+        {
+          "name": "apeNftAddress",
+          "type": {
+            "option": "publicKey"
+          }
+        },
+        {
+          "name": "tigerNftAddress",
+          "type": {
+            "option": "publicKey"
+          }
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "GlobalPool",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "superAdmin",
+            "type": "publicKey"
+          },
+          {
+            "name": "totalStakedApeCount",
+            "type": "u64"
+          },
+          {
+            "name": "totalStakedTigerCount",
+            "type": "u64"
+          },
+          {
+            "name": "totalStakedPairCount",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "UserPool",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "publicKey"
+          },
+          {
+            "name": "stakedCount",
+            "type": "u64"
+          },
+          {
+            "name": "stakedNfts",
+            "type": {
+              "array": [
+                {
+                  "defined": "StakedData"
+                },
+                100
+              ]
+            }
+          },
+          {
+            "name": "lastRewardTime",
+            "type": "i64"
+          },
+          {
+            "name": "remainingRewards",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "UserPairPool",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "publicKey"
+          },
+          {
+            "name": "stakedPairCount",
+            "type": "u64"
+          },
+          {
+            "name": "stakedPairs",
+            "type": {
+              "array": [
+                {
+                  "defined": "PairStakedData"
+                },
+                64
+              ]
+            }
+          },
+          {
+            "name": "lastRewardTime",
+            "type": "i64"
+          },
+          {
+            "name": "remainingRewards",
+            "type": "u64"
+          }
+        ]
+      }
+    }
+  ],
+  "types": [
+    {
+      "name": "StakedData",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "mint",
+            "type": "publicKey"
+          },
+          {
+            "name": "lastClaimedTime",
+            "type": "i64"
+          },
+          {
+            "name": "rank",
+            "type": "u64"
+          },
+          {
+            "name": "isApe",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PairStakedData",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "apeMint",
+            "type": "publicKey"
+          },
+          {
+            "name": "apeRank",
+            "type": "u64"
+          },
+          {
+            "name": "apeId",
+            "type": "u64"
+          },
+          {
+            "name": "tigerMint",
+            "type": "publicKey"
+          },
+          {
+            "name": "tigerRank",
+            "type": "u64"
+          },
+          {
+            "name": "tigerId",
+            "type": "u64"
+          },
+          {
+            "name": "lastClaimedTime",
+            "type": "i64"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "Uninitialized",
+      "msg": "Uninitialized account"
+    },
+    {
+      "code": 6001,
+      "name": "InvalidSuperOwner",
+      "msg": "Invalid Super Owner"
+    },
+    {
+      "code": 6002,
+      "name": "InvalidUserPool",
+      "msg": "Invalid User Pool Owner"
+    },
+    {
+      "code": 6003,
+      "name": "InvalidNFTAddress",
+      "msg": "Invalid NFT Address"
+    },
+    {
+      "code": 6004,
+      "name": "InvalidWithdrawTime",
+      "msg": "Invalid Withdraw Time"
+    },
+    {
+      "code": 6005,
+      "name": "InsufficientRewardVault",
+      "msg": "Insufficient Reward Token Balance"
+    },
+    {
+      "code": 6006,
+      "name": "InvaliedMetadata",
+      "msg": "Invalid Metadata Address"
+    },
+    {
+      "code": 6007,
+      "name": "MetadataCreatorParseError",
+      "msg": "Can't Parse The NFT's Creators"
+    },
+    {
+      "code": 6008,
+      "name": "UnkownOrNotAllowedNFTCollection",
+      "msg": "Unknown Collection Or The Collection Is Not Allowed"
+    }
+  ]
+}
