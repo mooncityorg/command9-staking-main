@@ -99,26 +99,7 @@ const main = async () => {
     //     lastRewardTime: (new Date(1000 * userPool.lastRewardTime.toNumber())).toLocaleString(),
     // });
     
-    // const userPool: UserPairPool = await getUserPairPoolState(payer.publicKey);//new PublicKey('9rDdTaSR8F4iDteLsLGmTVuVP3uw1wx5uXRs7LdWCqXQ'));
-    // console.log({
-    //     owner: userPool.owner.toBase58(),
-    //     stakedPairs: userPool.stakedPairs.slice(0, userPool.stakedPairCount.toNumber()).map((info) => {
-    //         return {
-    //             apeMint: info.apeMint.toBase58(),
-    //             apeRank: info.apeRank.toNumber(),
-    //             apeId: info.apeId.toNumber(),
-    //             tigerMint: info.tigerMint.toBase58(),
-    //             tigerRank: info.tigerRank.toNumber(),
-    //             tigerId: info.tigerId.toNumber(),
-    //             lastClaimedTime: info.lastClaimedTime.toNumber(),
-    //         }
-    //     }),
-    //     stakedPairCount: userPool.stakedPairCount.toNumber(),
-    //     remainingRewards: userPool.remainingRewards.toNumber(),
-    //     lastRewardTime: (new Date(1000 * userPool.lastRewardTime.toNumber())).toLocaleString(),
-    // });
-    // console.log(await calculateAvailableReward(payer.publicKey))//, new PublicKey('25EKJfvmeeVpL2eBMTP1w8QMbo86sSxyxGKykZWwq1R7')));
-    // console.log(await calculateAvailablePairReward(payer.publicKey, new PublicKey('25EKJfvmeeVpL2eBMTP1w8QMbo86sSxyxGKykZWwq1R7')));
+
     await getAllStakers();
     await getAllPairStakers();
 };
